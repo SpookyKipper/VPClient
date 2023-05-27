@@ -7,7 +7,7 @@ error_reporting(E_ERROR | E_PARSE);
 class VistapanelApi
 {
     
-    public $cpanelUrl = "";
+    public $cpanelUrl = "https://cpanel.spook.rr.nu";
     public $loggedIn = false;
     public $vistapanelSession = "";
     public $vistapanelSessionName = "PHPSESSID";
@@ -250,7 +250,7 @@ class VistapanelApi
             $this->classError("The database you're trying to remove doesn't exist.");
         }
         $this->simpleCurl($this->cpanelUrl . "/panel/indexpl.php?option=mysql&cmd=remove", true, array(
-            "toremove" => $this->accountUsername . "_" . $database,
+            "toremove" => $database,
             "Submit2" => "Remove Database"
         ), false, array(
             "Cookie: " . $this->vistapanelSessionName . "=" . $this->vistapanelSession
